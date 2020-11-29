@@ -18,9 +18,9 @@ const Friend = () => {
   }
   return (
     <div>
-      <Button handleFriend={getFriend} />
+      <Button handleChange={getFriend} />
       <FriendProfile
-        friendHolder={{
+        friendInfo={{
           friend: friend,
           hasError: hasError,
           isLoading: isLoading,
@@ -31,11 +31,11 @@ const Friend = () => {
 };
 
 const Button = (props) => (
-  <button onClick={props.handleFriend}>Get a friend</button>
+  <button onClick={props.handleChange}>Get a friend</button>
 );
 
-const FriendProfile = ({ friendHolder }) => {
-  const { friend, isLoading, hasError } = friendHolder;
+const FriendProfile = ({ friendInfo }) => {
+  const { friend, isLoading, hasError } = friendInfo;
   return (
     <div>
       {isLoading && <p>Loading ...</p>}

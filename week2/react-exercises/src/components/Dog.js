@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+const shortid = require("shortid");
 const DogGallery = () => {
   const [dogPhotos, setDogPhotos] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -20,9 +20,9 @@ const DogGallery = () => {
   }
   return (
     <div>
-      <Button handleDog={getFriend} />
+      <Button handleChange={getFriend} />
       <DogPhoto
-        dogHolder={{
+        dogInfo={{
           dogPhotos: dogPhotos,
           isLoading: isLoading,
           hasError: hasError,
@@ -32,16 +32,18 @@ const DogGallery = () => {
   );
 };
 
-const Button = (props) => <button onClick={props.handleDog}>Get a dog!</button>;
+const Button = (props) => (
+  <button onClick={props.handleChange}>Get a dog!</button>
+);
 
-const DogPhoto = ({ dogHolder }) => {
-  const { dogPhotos, isLoading, hasError } = dogHolder;
+const DogPhoto = ({ dogInfo }) => {
+  const { dogPhotos, isLoading, hasError } = dogInfo;
   return (
     <div>
       {isLoading && <p>Loading ... </p>}
       {!hasError &&
-        dogPhotos.map((dog, index) => (
-          <img src={dog} width="100px" alt="dog" key={index} />
+        dogPhotos.map((dog) => (
+          <img src={dog} width="100px" alt="dog" key={shortid.generate()} />
         ))}
     </div>
   );

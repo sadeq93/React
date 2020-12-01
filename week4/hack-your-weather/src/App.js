@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import Routes from "./Routes/PagesRoute";
+import PagesRoute from "./Routes/PagesRoute";
 
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <PagesRoute />
     </div>
   );
 }

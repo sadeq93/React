@@ -17,12 +17,11 @@ const CityWeatherContainer = () => {
       setWeather([data, ...weather]);
 
       !data.name && setValidName(true);
-
-      setLoading(false);
     } catch (err) {
       console.error(err);
       setError(true);
     } finally {
+      setLoading(false);
       setCityName("");
     }
   }
